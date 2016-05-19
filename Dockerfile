@@ -1,3 +1,3 @@
-FROM logstash:2.3.0-1
+FROM logstash:2.3.2-1
 
 ADD logstash.conf /
