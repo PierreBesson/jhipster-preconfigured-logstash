@@ -1,0 +1,19 @@
+version: '2'
+services:
+    elk-elasticsearch:
+        image: elasticsearch:2.3.2
+        ports:
+            - 9200:9200
+            - 9300:9300
+    elk-logstash:
+        image: pbesson/jhipster-preconfigured-logstash
+        command: logstash -f /logstash.conf
+        ports:
+            - 5000:5000/udp
+    jhipster-console:
+        image: jhipster/jhipster-console:v1.2.1
+        ports:
+            - 5601:5601
+        environment:
+            - ELASTICSEARCH_URL=http://elk-elasticsearch:9200
+
